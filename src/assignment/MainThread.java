@@ -29,7 +29,7 @@ public class MainThread {
                     postController.showPostList();
                     break;
                 case 3:
-                    System.out.println("In developing");
+                    postController.searchPost();
                     break;
                 case 4:
                     System.out.println("In developing");

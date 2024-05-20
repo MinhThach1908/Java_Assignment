@@ -11,7 +11,6 @@ public class PostController {
     public void createPost() {
         System.out.println("Creating a new post...");
         System.out.println("------------------------------");
-        // Yêu cầu nhập thông tin
         System.out.println("Please enter post's information.");
         System.out.println("Enter post's id: ");
         long postId = scanner.nextLong();
@@ -28,7 +27,6 @@ public class PostController {
         String authorName = scanner.nextLine();
         System.out.println("Enter post's writing date: ");
         String writingDate = scanner.nextLine();
-        // Tạo đối tượng post mới từ thông tin được nhập
         Post post = new Post();
         post.setPostId(postId);
         post.setPostTitle(postTitle);
@@ -37,7 +35,6 @@ public class PostController {
         post.setMainContent(mainContent);
         post.setAuthorName(authorName);
         post.setWritingDate(writingDate);
-        // Đưa post vào list
         posts.add(post);
         System.out.println("Saved Successfully");
     }
@@ -47,10 +44,32 @@ public class PostController {
         System.out.println("Showing list of the posts have been entered...");
         System.out.println("----------------------------------------------------");
         System.out.printf("%-10s ||%-30s ||%-30s ||%-30s ||%-30s ||%-30s ||%-30s\n", "Id", "Title", "Description", "Avatar", "Main Content", "Author", "Writing Date");
-        System.out.println("====================================================================================================================================================");
+        System.out.println("==========================================================================================================================================================================");
         for (int i = 0; i < posts.size(); i++) {
             Post p = posts.get(i);
             System.out.printf("%-10s ||%-30s ||%-30s ||%-30s ||%-30s ||%-30s ||%-30s\n", p.getPostId(), p.getPostTitle(), p.getDescription(), p.getAvatar(), p.getMainContent(), p.getAuthorName(), p.getWritingDate());
+        }
+        System.out.println("Please press the enter button to continue.");
+        scanner.nextLine();
+    }
+
+    // 3. Tìm kiếm bài viết bằng id
+    public void searchPost() {
+        System.out.println("Enter post's id: ");
+        long postId = scanner.nextLong();
+        scanner.nextLine();
+        long searchKey = -1;
+        for (int i = 0; i < posts.size(); i++) {
+            Post p = posts.get(i);
+            if(p.getPostId() == postId) {
+                searchKey = postId;
+                System.out.printf("%-10s ||%-30s ||%-30s ||%-30s ||%-30s ||%-30s ||%-30s\n", "Id", "Title", "Description", "Avatar", "Main Content", "Author", "Writing Date");
+                System.out.println("==========================================================================================================================================================================");
+                System.out.printf("%-10s ||%-30s ||%-30s ||%-30s ||%-30s ||%-30s ||%-30s\n", p.getPostId(), p.getPostTitle(), p.getDescription(), p.getAvatar(), p.getMainContent(), p.getAuthorName(), p.getWritingDate());
+            }
+        }
+        if (searchKey == -1) {
+            System.out.println("No posts were founded");
         }
         System.out.println("Please press the enter button to continue.");
         scanner.nextLine();
