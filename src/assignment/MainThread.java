@@ -32,7 +32,7 @@ public class MainThread {
                     postController.searchPost();
                     break;
                 case 4:
-                    System.out.println("In developing");
+                    System.out.println("In development");
                     break;
                 case 0:
                     System.out.println("Goodbye, see you again!");
